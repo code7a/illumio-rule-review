@@ -21,8 +21,8 @@
   "content_scripts": [
     {
       "matches": [
-        "*://*/rulesets/*",
-        "*://*/rulesets"
+        "*://*/#/rulesets/*",
+        "*://*/#/rulesets"
       ],
       "js": ["illumio-rule-review.js"],
       "run_at": "document_idle"
