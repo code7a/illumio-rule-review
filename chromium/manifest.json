@@ -1,31 +1,18 @@
 {
   "manifest_version": 3,
   "name": "illumio-rule-review",
-  "version": "1.0.0",
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "click.serviceslab@ai-flow-scorer",
-      "data_collection_permissions": {
-        "required": ["none"],
-        "collects_personal_data": false,
-        "collects_location_data": false,
-        "collects_health_data": false,
-        "collects_financial_data": false,
-        "collects_authentication_information": false,
-        "collects_web_activity": false,
-        "collects_communications": false,
-        "collects_user_identifiers": false
-      }
-    }
-  },
+  "version": "0.1.0",
+  "permissions": ["webRequest", "webNavigation", "scripting", "storage"],
   "content_scripts": [
     {
-      "matches": [
-        "*://*/#/rulesets/*",
-        "*://*/#/rulesets"
-      ],
-      "js": ["illumio-rule-review.js"],
+      "matches": ["https://*/*"],
+      "js": ["content.js"],
       "run_at": "document_idle"
     }
-  ]
+  ],
+  "host_permissions": ["https://*/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  }
 }
